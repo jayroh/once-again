@@ -1,11 +1,9 @@
 #!/usr/bin/env bash
 
-docker buildx create --name multibuilder --use
-
-docker buildx install
+# docker buildx create --name multibuilder --use
+# docker buildx install
 
 docker buildx build --push \
-  --no-cache \
   --platform linux/amd64,linux/arm64 \
   --tag jayroh/once-again:latest \
   .

@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 docker run --rm -it \
+       --name once_again \
        -p 3000:3000  \
        --env RAILS_ENV=development \
        --env RAILS_MASTER_KEY=`cat config/master.key` \
