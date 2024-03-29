@@ -11,7 +11,7 @@ class JpgCreator
     end
   end
 
-  SOURCE_IMAGE = "tmp/once-again.png"
+  SOURCE_IMAGE = "app/assets/images/once-again.png"
 
   def initialize(image_slug)
     @image_slug = image_slug
@@ -26,7 +26,7 @@ class JpgCreator
   def create
     return if File.exist?("tmp/images/#{image_slug}.jpg")
 
-    image = MiniMagick::Image.open("tmp/once-again.png")
+    image = MiniMagick::Image.open(SOURCE_IMAGE)
     image.format 'jpg'
     image.combine_options do |i|
       i.gravity 'South'

@@ -29,7 +29,6 @@
 !/tmp/storage/
 !/tmp/storage/.keep
 /tmp/images/*
-!/tmp/once-again.png
 !/tmp/images/
 !/tmp/images/.keep
 

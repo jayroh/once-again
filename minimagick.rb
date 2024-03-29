@@ -1,6 +1,6 @@
 require 'mini_magick'
 
-image_path = 'tmp/once-again.png'
+image_path = 'app/assets/images/once-again.png'
 output_path = 'tmp/images/test.jpg'
 # asking = "I am once again asking for".upcase
 question = "you to go to fucking bed".upcase
