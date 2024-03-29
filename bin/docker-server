@@ -1,3 +1,8 @@
 #!/usr/bin/env bash
 
-docker run --rm -it -p 3000:3000 --env RAILS_MASTER_KEY=`cat config/master.key` jayroh/once-again
+docker run --rm -it \
+       -p 3000:3000  \
+       --env RAILS_ENV=development \
+       --env RAILS_MASTER_KEY=`cat config/master.key` \
+       -v "$(PWD)/tmp/images:/rails/tmp/images" \
+       jayroh/once-again
