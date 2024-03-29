@@ -21,6 +21,9 @@ require 'action_view/railtie'
 Bundler.require(*Rails.groups)
 
 module OnceAgain
+
+  VERSION = "1.1"
+
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.1

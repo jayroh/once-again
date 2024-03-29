@@ -11,7 +11,7 @@ draw_options = {
   pointsize: 46, # Font size
   fill: 'white', # Text color
   gravity: 'South', # Position at the bottom
-  font: '@tmp/impact.ttf'
+  font: '@app/assets/fonts/impact.ttf'
 }
 
 # image.combine_options do |i|

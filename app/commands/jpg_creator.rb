@@ -32,7 +32,7 @@ class JpgCreator
       i.gravity 'South'
       i.pointsize 46
       i.fill 'white'
-      i.font '@tmp/impact.ttf'
+      i.font '@app/assets/fonts/impact.ttf'
       i.draw "text 0,90 '#{once_again_request}'"
     end
 

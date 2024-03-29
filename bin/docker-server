@@ -6,4 +6,4 @@ docker run --rm -it \
        --env RAILS_ENV=development \
        --env RAILS_MASTER_KEY=`cat config/master.key` \
        -v "$(PWD)/tmp/images:/rails/tmp/images" \
-       jayroh/once-again
+       "jayroh/once-again:v`bin/rails runner -e development 'puts OnceAgain::VERSION'`"
