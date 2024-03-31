@@ -18,27 +18,30 @@ Other dependencies:
 ## How to run the test suite
 
 ```sh
-bundle exec rake
+./bin/rake
+```
+
+## Running locally
+
+```sh
+./bin/setup
+./bin/rails server
 ```
 
 ## Deployment
 
 ### With `docker-compose`
 
-On your host machine, make sure to create the needed credential files.
-They can then be mounted via docker(-compose).
-
-```sh
-# Generate credentials
-EDITOR=vim bin/rails credentials:edit
-```
+Generate `SECRET_KEY_BASE` and `RAILS_MASTER_KEY` with `openssl` (see below)
+and assign to the ENV's in docker-compose `environment`. You can also mount a
+`.env` file with `volumes`. That should work.
 
 ```yml
 version: "3.8"
 
 services:
   once_again:
-  image: jayroh/once-again:v1.1
+  image: jayroh/once-again:v1.2
   container_name: once_again
   restart: unless-stopped
 
