@@ -1,24 +1,62 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## System dependencies
 
-Things you may want to cover:
+Ruby version 3.3.0
 
-* Ruby version
+Other dependencies:
 
-* System dependencies
+* libglib2.0-0
+* libglib2.0-dev
+* libjpeg62-turbo-dev
+* libpng-dev
+* libvips
+* imagemagick
 
-* Configuration
+(Everything already set up if using docker)
 
-* Database creation
+## How to run the test suite
 
-* Database initialization
+```sh
+bundle exec rake
+```
 
-* How to run the test suite
+## Deployment
 
-* Services (job queues, cache servers, search engines, etc.)
+### With `docker-compose`
 
-* Deployment instructions
+On your host machine, make sure to create the needed credential files.
+They can then be mounted via docker(-compose).
 
-* ...
+```sh
+# Generate credentials
+EDITOR=vim bin/rails credentials:edit
+```
+
+```yml
+version: "3.8"
+
+services:
+  once_again:
+  image: jayroh/once-again:v1.1
+  container_name: once_again
+  restart: unless-stopped
+
+  # expose port 3000 to internal network
+  expose:
+    - 3000
+
+  # map internal port 3000 to host port 3000
+  # ports:
+  #   - "3000:3000"
+
+  # map local dirs to host filesystem
+  volumes:
+    - "./data/once_again/tmp/images:/rails/tmp/images"
+
+  # generate via `openssl`
+  environment:
+    SECRET_KEY_BASE: ... # `openssl rand -hex 128`
+    RAILS_MASTER_KEY: ...# `openssl rand -hex 32`
+
+```

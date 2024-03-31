@@ -21,8 +21,7 @@ require 'action_view/railtie'
 Bundler.require(*Rails.groups)
 
 module OnceAgain
-
-  VERSION = "1.1"
+  VERSION = '1.2'
 
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
@@ -43,5 +42,9 @@ module OnceAgain
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # Set necessary credentials for production
+    config.credentials.master_key = ENV.fetch('RAILS_MASTER_KEY', nil)
+    config.credentials.secret_key_base = ENV.fetch('SECRET_KEY_BASE', nil)
   end
 end

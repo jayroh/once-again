@@ -17,6 +17,15 @@ FileUtils.chdir APP_ROOT do
   system! "gem install bundler --conservative"
   system("bundle check") || system!("bundle install")
 
+  unless File.exist?(".env")
+    puts "== Setting up ENV variables =="
+    env_file = File.read(".env.sample")
+    env_file.gsub!(/(RAILS_MASTER_KEY=).*/, "\\1#{`openssl rand -hex 16`}")
+    env_file.gsub!(/(SECRET_KEY_BASE=).*/, "\\1#{`openssl rand -hex 64`}")
+    env_file.gsub!("\n\n", "\n")
+    File.write(".env", env_file)
+  end
+
   puts "\n== Removing old logs and tempfiles =="
   system! "bin/rails log:clear tmp:clear"
 
