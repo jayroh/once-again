@@ -61,5 +61,4 @@ services:
   environment:
     SECRET_KEY_BASE: ... # `openssl rand -hex 128`
     RAILS_MASTER_KEY: ...# `openssl rand -hex 32`
-
 ```

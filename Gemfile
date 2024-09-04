@@ -2,13 +2,13 @@
 
 source 'https://rubygems.org'
 
-ruby '3.3.0'
+ruby file: '.tool-versions'
 
 gem 'bootsnap', require: false
 gem 'dotenv'
 gem 'mini_magick'
 gem 'puma', '>= 5.0'
-gem 'rails', github: 'rails/rails', branch: '7-1-stable'
+gem 'rails', github: 'rails/rails', branch: '7-2-stable'
 gem 'ruby-vips', '~> 2.2'
 gem 'tzinfo-data', platforms: %i[windows jruby]
 
