@@ -1,13 +1,18 @@
 #!/usr/bin/env bash
 
-# docker buildx create --name multibuilder --use
 docker buildx install
+docker buildx create --name multibuilder --driver=docker-container --use
+docker buildx build \
+	--builder multibuilder \
+	--push \
+	--no-cache \
+	--platform linux/amd64,linux/arm64 \
+	--tag jayroh/once-again:latest \
+	--tag "jayroh/once-again:v`bin/rails runner -e development 'puts OnceAgain::VERSION'`" .
 
-docker buildx build --push \
-  --no-cache \
-  --platform linux/amd64,linux/arm64 \
-  --tag jayroh/once-again:latest \
-  --tag "jayroh/once-again:v`bin/rails runner -e development 'puts OnceAgain::VERSION'`" \
-  .
+if command -v say &> /dev/null
+then
+    say Done building and pushing docker image!
+    exit 1
+fi
 
-say Done building and pushing docker image!
